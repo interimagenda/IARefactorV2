@@ -4,6 +4,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :role
+  has_many :jobs
   before_save :assign_role
 
   def assign_role
