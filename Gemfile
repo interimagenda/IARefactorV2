@@ -16,6 +16,7 @@ gem 'will_paginate'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'autoprefixer-rails'
 gem 'font-awesome-rails'
+gem 'cancancan'
 
 group :development, :test do
   gem 'byebug', platform: :mri

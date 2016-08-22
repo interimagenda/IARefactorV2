@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index]
+  # before_action :authenticate_user!, except: [:index]
+  load_and_authorize_resource
 
   def index
     @jobs = Job.all.paginate(page: params[:page], per_page: 25)
@@ -16,9 +17,10 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
+    @job.user_id = current_user.id
     if @job.save
       flash[:success] = "The job was created."
-      redirect_to root_path
+      redirect_to jobs_path
     else
       flash[:error] = "Something went wrong. Please try again."
       render 'new'
@@ -33,7 +35,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     if @job.update_attributes(job_params)
       flash[:success] = "The job has been updated."
-      redirect_to root_path
+      redirect_to jobs_path
     else
       flash[:error] = "Something went wrong. Please try again."
       render 'edit'
@@ -44,7 +46,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     @job.destroy
     flash[:success] = "The job has been deleted."
-    redirect_to root_path
+    redirect_to jobs_path
   end
 
   private

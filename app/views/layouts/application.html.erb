@@ -9,6 +9,9 @@
   </head>
 
   <body>
+    <% if current_user %>
+    hello I am currently a <%= current_user.role_id %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
