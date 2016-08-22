@@ -1,4 +1,6 @@
 class FreelancersController < ApplicationController
+  
+  before_action :authenticate_user!
 
   # Freelancer is role_id 1 (2 is for employers)
 

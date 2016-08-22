@@ -50,7 +50,6 @@ GEM
       will_paginate
     builder (3.2.2)
     byebug (9.0.5)
-    cancancan (1.15.0)
     capybara (2.8.0)
       addressable
       mime-types (>= 1.16)
@@ -253,7 +252,6 @@ DEPENDENCIES
   bootstrap-sass
   bootstrap-will_paginate
   byebug
-  cancancan
   capybara
   devise
   factory_girl_rails

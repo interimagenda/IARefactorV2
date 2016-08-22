@@ -1,5 +1,7 @@
 class EmployersController < ApplicationController
 
+  before_action :authenticate_user!
+
   # Employer is role_id 2 (1 is for freelancers)
 
   def index
