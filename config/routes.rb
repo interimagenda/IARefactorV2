@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :jobs
+  resources :freelancers, only: [:index, :show]
+  resources :employers, only: [:index, :show]
 
   get 'contact' => 'pages#contact', as: 'contact'
   get 'about' => 'pages#about', as: 'about'
