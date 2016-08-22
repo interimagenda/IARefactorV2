@@ -1,0 +1,12 @@
+<% @jobs.each do |job| %>
+
+  <%= job.title %>
+  <%= link_to "See job", job_path(job.id) %>
+
+  <!-- Links to CRUD-actions -->
+  <%= link_to "Edit job", edit_job_path( job.id ) %>
+  <%= link_to "Delete job", job, method: :delete, data: {confirm: "Do you wish to delete #{job.title}?"} %>
+
+<% end %>
+
+<%= link_to "New job", new_job_path %>
