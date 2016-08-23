@@ -5,8 +5,8 @@ class FreelancersController < ApplicationController
   # Freelancer is role_id 1 (2 is for employers)
 
   def index
-    @freelancers = User.where(role_id: 1)
-    @favorites = @freelancers.where(id: current_user.followees(User).map(&:id));
+    @freelancers = User.where(role_id: 1).paginate(page: params[:page], per_page: 2)
+    @favorites = @freelancers.where(id: current_user.followees(User).map(&:id))
   end
 
   def show

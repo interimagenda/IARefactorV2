@@ -4,7 +4,7 @@ class JobsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @jobs = @jobs.paginate(page: params[:page], per_page: 25)
+    @jobs = @jobs.paginate(page: params[:page], per_page: 2)
     @favorite_jobs = @jobs.where(id: current_user.likees(Job).map(&:id));
   end
 
