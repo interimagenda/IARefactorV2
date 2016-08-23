@@ -2,4 +2,10 @@
 
   <%= employer.email %>
 
+  <% if !current_user.follows?(employer) %>
+    <%= link_to('Follow', user_follow_path(employer), method: :post) %>
+    <% else %>
+    <%= link_to('Unfollow', user_unfollow_path(employer), method: :post) %>
+  <% end %>
+
 <% end %>
