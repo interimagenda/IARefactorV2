@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :jobs
   resources :freelancers, only: [:index, :show]
   resources :employers, only: [:index, :show]
+  resources :conversations, only: [:index, :show, :destroy]
+  resources :messages, only: [:new, :create]
 
   resources :users do
     post 'follow',   to: 'socializations#follow'
@@ -14,6 +16,17 @@ Rails.application.routes.draw do
   resources :jobs do
     post 'like',   to: 'socializations#like'
     post 'unlike', to: 'socializations#unlike'
+  end
+
+  resources :conversations, only: [:index, :show, :destroy] do
+    member do
+      post :reply
+      post :restore
+      post :mark_as_read
+    end
+    collection do
+      delete :empty_trash
+    end
   end
 
   get 'contact' => 'pages#contact', as: 'contact'

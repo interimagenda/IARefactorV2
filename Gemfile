@@ -18,6 +18,10 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-rails'
 gem 'cancancan'
 gem 'socialization'
+gem 'mailboxer'
+gem 'chosen-rails'
+gem 'coffee-rails', '~> 4.2.1'
+gem 'jquery-turbolinks'
 
 group :development, :test do
   gem 'byebug', platform: :mri

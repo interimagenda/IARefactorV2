@@ -6,6 +6,7 @@ class User < ApplicationRecord
   acts_as_followable
   acts_as_follower
   acts_as_liker
+  acts_as_messageable
 
   belongs_to :role
   has_many :jobs
@@ -23,6 +24,10 @@ class User < ApplicationRecord
 
   def employer?
     self.role.title == "Employer"
+  end
+
+  def mailboxer_email(object)
+    email
   end
 
 end
