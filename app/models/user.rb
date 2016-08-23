@@ -3,6 +3,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  acts_as_followable
+  acts_as_follower
+  acts_as_liker
+
   belongs_to :role
   has_many :jobs
   before_save :assign_role

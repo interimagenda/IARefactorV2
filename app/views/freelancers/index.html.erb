@@ -2,4 +2,10 @@
 
   <%= freelancer.email %>
 
+  <% if !current_user.follows?(freelancer) %>
+    <%= link_to('Follow', user_follow_path(freelancer), method: :post) %>
+    <% else %>
+    <%= link_to('Unfollow', user_unfollow_path(freelancer), method: :post) %>
+  <% end %>
+
 <% end %>

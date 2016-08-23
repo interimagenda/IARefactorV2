@@ -6,6 +6,16 @@ Rails.application.routes.draw do
   resources :freelancers, only: [:index, :show]
   resources :employers, only: [:index, :show]
 
+  resources :users do
+    post 'follow',   to: 'socializations#follow'
+    post 'unfollow', to: 'socializations#unfollow'
+  end
+
+  resources :jobs do
+    post 'like',   to: 'socializations#like'
+    post 'unlike', to: 'socializations#unlike'
+  end
+
   get 'contact' => 'pages#contact', as: 'contact'
   get 'about' => 'pages#about', as: 'about'
   get 'blogs' => 'pages#blogs', as: 'blogs'
