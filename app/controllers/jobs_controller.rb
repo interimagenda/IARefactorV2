@@ -5,6 +5,7 @@ class JobsController < ApplicationController
 
   def index
     @jobs = Job.all.paginate(page: params[:page], per_page: 25)
+    @favorite_jobs = @jobs.where(id: current_user.likees(Job).map(&:id));
   end
 
   def show

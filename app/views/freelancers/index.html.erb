@@ -1,3 +1,11 @@
+<!-- FAVORITES -->
+
+<% @favorites.each do |favorite| %>
+  <%= favorite.first_name %> <%= favorite.last_name %>
+<% end %>
+
+<!-- END FAVORITES -->
+
 <% @freelancers.each do |freelancer| %>
 
   <%= freelancer.email %>

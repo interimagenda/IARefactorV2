@@ -1,6 +1,9 @@
+
+
 <% @employers.each do |employer| %>
 
   <%= employer.email %>
+  amount of followers <%= employer.followers(User).count %>
 
   <% if !current_user.follows?(employer) %>
     <%= link_to('Follow', user_follow_path(employer), method: :post) %>

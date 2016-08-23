@@ -6,6 +6,7 @@ class EmployersController < ApplicationController
 
   def index
     @employers = User.where(role_id: 2)
+    @favorites = @employers.where(id: current_user.followees(User).map(&:id));
   end
 
   def show
