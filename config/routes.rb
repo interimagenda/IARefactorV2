@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   get 'guide' => 'pages#guide', as: 'guide'
   get 'terms_and_conditions' => 'pages#terms_and_conditions', as: 'terms_and_conditions'
   get 'faq' => 'pages#faq', as: 'faq'
+  get 'job_openings' => 'pages#job_openings', as: 'job_openings'
 
   root 'pages#landing'
 

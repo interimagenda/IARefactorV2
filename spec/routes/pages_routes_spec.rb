@@ -33,6 +33,10 @@ RSpec.describe PagesController, type: :routing do
       expect(get: "/guide").to route_to("pages#guide")
     end
 
+    it "routes to #job_openings" do
+      expect(get: "/job_openings").to route_to("pages#job_openings")
+    end
+
   end
 
 end
