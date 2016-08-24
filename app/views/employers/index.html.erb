@@ -1,3 +1,6 @@
+<% @favorites.each do |favorite| %>
+  <%= link_to favorite.first_name, employer_path(favorite.id) %>
+<% end %>
 
 
 <% @employers.each do |employer| %>

@@ -1,7 +1,7 @@
 <!-- FAVORITES -->
 
 <% @favorites.each do |favorite| %>
-  <%= favorite.first_name %> <%= favorite.last_name %>
+  <%= link_to favorite.first_name, freelancer_path(favorite.id) %>
 <% end %>
 
 <!-- END FAVORITES -->
