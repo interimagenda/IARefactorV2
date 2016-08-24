@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :jobs
   resources :freelancers, only: [:index, :show]
+  resources :freelancer_profiles, only: [:show, :edit, :update, :new, :create]
   resources :employers, only: [:index, :show]
   resources :conversations, only: [:index, :show, :destroy]
   resources :messages, only: [:new, :create]

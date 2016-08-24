@@ -15,7 +15,7 @@ class JobsController < ApplicationController
   end
 
   def create
-    @job = Job.new(job_params)
+    @job = Job.new(create_params)
     @job.user_id = current_user.id
     if @job.save
       flash[:success] = "The job was created."
@@ -32,7 +32,7 @@ class JobsController < ApplicationController
 
   def update
     @job = Job.find(params[:id])
-    if @job.update_attributes(job_params)
+    if @job.update_attributes(update_params)
       flash[:success] = "The job has been updated."
       redirect_to jobs_path
     else
@@ -50,8 +50,12 @@ class JobsController < ApplicationController
 
   private
 
-  def job_params
-    params.require( :job ).permit(:title )
+  def create_params
+    params.require( :job ).permit(:title, :user_id )
+  end
+
+  def update_params
+    params.require( :job ).permit(:title, :user_id)
   end
 
 end

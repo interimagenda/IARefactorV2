@@ -1,0 +1,8 @@
+<%= form_for @freelancer_profile do |f| %>
+
+  <%= f.label :business %>
+  <%= f.text_field :business %>
+
+  <%= f.submit (@freelancer_profile.new_record? ? "Create" : "Update") %>
+
+<% end %>

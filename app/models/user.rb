@@ -9,7 +9,11 @@ class User < ApplicationRecord
   acts_as_messageable
 
   belongs_to :role
-  has_many :jobs
+
+  has_one :freelancer_profile, dependent: :destroy
+  has_one :employer_profile, dependent: :destroy
+  has_many :jobs, dependent: :destroy
+
   before_save :assign_role
 
   ROLES = ["Freelancer", "Employer"]

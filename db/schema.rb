@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823103656) do
+ActiveRecord::Schema.define(version: 20160824084507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "employer_profiles", force: :cascade do |t|
+    t.string   "business"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_employer_profiles_on_user_id", using: :btree
+  end
 
   create_table "follows", force: :cascade do |t|
     t.string   "follower_type"
@@ -23,6 +31,14 @@ ActiveRecord::Schema.define(version: 20160823103656) do
     t.datetime "created_at"
     t.index ["followable_id", "followable_type"], name: "fk_followables", using: :btree
     t.index ["follower_id", "follower_type"], name: "fk_follows", using: :btree
+  end
+
+  create_table "freelancer_profiles", force: :cascade do |t|
+    t.string   "business"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_freelancer_profiles_on_user_id", using: :btree
   end
 
   create_table "jobs", force: :cascade do |t|
