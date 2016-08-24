@@ -21,14 +21,3 @@ RSpec.describe SocializationsController, type: :routing do
     end
   end
 end
-
-
-# resources :users do
-#   post 'follow',   to: 'socializations#follow'
-#   post 'unfollow', to: 'socializations#unfollow'
-# end
-#
-# resources :jobs do
-#   post 'like',   to: 'socializations#like'
-#   post 'unlike', to: 'socializations#unlike'
-# end
