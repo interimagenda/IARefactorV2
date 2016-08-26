@@ -9,11 +9,13 @@
   </head>
   <body>
 
-    <%= render "layouts/flashes" %>
-
     <%= render "layouts/navigation" %>
 
+    <%= render "layouts/flashes" %>
+
     <%= yield %>
+
+    <%= render "layouts/footer" %>
 
   </body>
 </html>

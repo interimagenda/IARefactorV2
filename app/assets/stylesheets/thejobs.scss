@@ -1,17 +1,14 @@
-// Initial
-
-@import 'bootstrap';
-@import 'bootstrap-sprockets';
-@import 'chosen';
-@import 'app.min';
+/*
+ * TheJobs v1.0.0 (http://shamsoft.net/thejobs)
+ * Copyright 2016 ShaMSofT
+ * Licensed under the Themeforest Standard Licenses
+ */
 
 // Core variables and mixins
-
 @import "variables";
 @import "mixins";
 
 // Basic elements
-
 @import "elements/alert";
 @import "elements/buttons";
 @import "elements/forms";
@@ -19,8 +16,8 @@
 @import "elements/progress";
 @import "elements/typography";
 
-// Components
 
+// Components
 @import "components/category";
 @import "components/counter";
 @import "components/faq";
@@ -44,11 +41,8 @@
 @import "components/media-list";
 
 // Plugins
-
 @import "plugins/summernote";
 @import "plugins/bootstrap-select";
 
 // Others
-
 @import "utilities";
-@import 'custom';
