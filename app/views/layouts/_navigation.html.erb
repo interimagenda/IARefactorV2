@@ -26,13 +26,40 @@
     <!-- END User account -->
 
     <!-- Navigation menu -->
+
     <ul class="nav-menu">
+
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to "Jobs", jobs_path %>
+        </li>
+      <% end %>
+
+      <% if user_signed_in? && current_user.freelancer?%>
+        <li>
+          <%= link_to "Employers", employers_path %>
+        </li>
+      <% end %>
+
+      <% if user_signed_in? && current_user.employer?%>
+        <li>
+          <%= link_to "Freelancers", employers_path %>
+        </li>
+      <% end %>
+
+      <% if user_signed_in? %>
+
+      <li><%= link_to 'Messages', conversations_path %></li>
       <li>
-        <%= link_to "Home", root_path %>
+        <%= link_to "Account & Profile", edit_freelancer_profile_path(current_user.id) %>
+        <ul>
+          <li><%= link_to 'Edit profile', edit_freelancer_profile_path(current_user.id) %></li>
+          <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+
+        </ul>
       </li>
-      <li>
-        <%= link_to "Jobs", jobs_path %>
-      </li>
+      <% end %>
+
       <li>
         <%= link_to "NAME HERE", about_path %>
         <ul>
@@ -49,13 +76,3 @@
   </div>
 </nav>
 <!-- END Navigation bar -->
-
-<ul class="nav navbar-nav">
-  <% if user_signed_in? %>
-    <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-    <li><%= link_to 'Your Conversations', conversations_path %></li>
-    <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
-  <% else %>
-    <li><%= link_to 'Log In', new_user_session_path %></li>
-  <% end %>
-</ul>
