@@ -34,4 +34,12 @@ class User < ApplicationRecord
     email
   end
 
+  def self.employer_search(query)
+     where("first_name ILIKE ?", "%#{query}%")
+  end
+
+  def self.freelancer_search(query)
+     where("first_name ILIKE ?", "%#{query}%")
+  end
+
 end

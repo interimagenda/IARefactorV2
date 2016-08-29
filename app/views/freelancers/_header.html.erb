@@ -1,13 +1,13 @@
 <header class="page-header bg-img header-job-search">
   <div class="container page-name">
-    <h1 class="text-center">Browse employer representatives</h1>
-    <p class="lead text-center">Find representatives that are looking for people like you!</p>
+    <h1 class="text-center">Browse freelancers</h1>
+    <p class="lead text-center">Find your unicorn!</p>
   </div>
   <div class="container">
     <%= form_tag '/employers', :method => "get", id: "search-form", class: "header-job-search" do %>
       <div class="row">
         <div class="form-group col-xs-12">
-           <%= search_field_tag :employer_search, params[:employer_search], placeholder: "insert a search query here", autofocus: true, class: "form-control" %>
+           <%= search_field_tag :freelancer_search, params[:freelancer_search], placeholder: "insert a search query here", autofocus: true, class: "form-control" %>
         </div>
       </div>
       <div class="button-group">

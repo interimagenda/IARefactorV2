@@ -5,8 +5,18 @@ class FreelancersController < ApplicationController
   # Freelancer is role_id 1 (2 is for employers)
 
   def index
-    @freelancers = User.where(role_id: 1).paginate(page: params[:page], per_page: 25)
-    @favorites = @freelancers.where(id: current_user.followees(User).map(&:id))
+    if current_user.employer?
+      if params[:freelancer_search]
+        @freelancers = User.where(role_id: 1).freelancer_search(params[:freelancer_search]).paginate(page: params[:page], per_page: 25)
+      else
+        flash[:error] = "Couldn't find the freelancer"
+        @freelancers = User.where(role_id: 1).paginate(page: params[:page], per_page: 20)
+      end
+    else
+      flash[:error] = "I'm sorry, this page is restricted."
+      redirect_to root_path
+      # @favorites = @freelancers.where(id: current_user.followees(User).map(&:id))
+    end
   end
 
   def show

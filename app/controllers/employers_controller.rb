@@ -6,8 +6,12 @@ class EmployersController < ApplicationController
 
   def index
     if current_user.freelancer?
-      @employers = User.where(role_id: 2).paginate(page: params[:page], per_page: 2)
-      @favorites = @employers.where(id: current_user.followees(User).map(&:id));
+      if params[:employer_search]
+        @employers = User.where(role_id: 2).employer_search(params[:employer_search]).order("created_at DESC").paginate(page: params[:page], per_page: 25)
+      else
+        flash[:error] = "Couldn't find the employer"
+        @employers = User.where(role_id: 2).paginate(page: params[:page], per_page: 20)
+      end
     else
       flash[:error] = "I'm sorry, this page is restricted."
       redirect_to root_path
