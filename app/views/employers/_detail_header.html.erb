@@ -1,0 +1,54 @@
+<!-- Page header -->
+<header class="page-header bg-img size-lg" style="background-image: url(assets/img/bg-banner2.jpg)">
+  <div class="container">
+    <div class="header-detail">
+      <div class="hgroup">
+        <h1>SOME_NAME | <%= @employer.first_name %> <%= @employer.last_name %></h1>
+        <h3>SOME_BUSINESS</h3>
+      </div>
+      <hr>
+      <p class="lead">SOME_DESCRIPTION</p>
+
+      <ul class="details cols-3">
+        <li>
+          <i class="fa fa-map-marker"></i>
+          <span>SOME_LOCATION</span>
+        </li>
+
+        <li>
+          <i class="fa fa-globe"></i>
+          <a href="#">SOME_WEBSITE</a>
+        </li>
+
+        <li>
+          <i class="fa fa-envelope"></i>
+          <a href="#">SOME_EMAIL</a>
+        </li>
+      </ul>
+
+      <div class="button-group">
+        <ul class="social-icons">
+          <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+          <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+          <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+        </ul>
+
+        <div class="action-buttons">
+          <% if !current_user.follows?(@employer) %>
+            <%= link_to user_follow_path(@employer), method: :post, class: "btn btn-success" do %>
+              follow
+              <i class="fa fa-star" aria-hidden="true"></i>
+            <% end %>
+          <% else %>
+            <%= link_to user_unfollow_path(@employer), method: :post, class: "btn btn-gray" do %>
+              unfollow
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

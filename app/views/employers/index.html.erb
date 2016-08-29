@@ -16,3 +16,46 @@
   <% end %>
 
 <% end %>
+
+<%= render 'header' %>
+
+<main>
+  <section class="no-padding-top bg-alt">
+    <div class="container">
+      <div class="row">
+        <% @employers.each do |employer| %>
+        <div class="col-xs-12">
+          <%= link_to employer_path(employer), class: "item-block" do %>
+            <header>
+              <div class="hgroup">
+                <h4>SOME_COMPANY_NAME | <%= employer.first_name %> <%= employer.last_name %></h4>
+              </div>
+              <time datetime="2016-03-10 20:00">34 min ago</time>
+            </header>
+
+            <div class="item-body">
+              <p>SOME_DESCRIPTION_HERE</p>
+            </div>
+
+            <footer>
+              <ul class="details cols-3">
+
+
+                <li>
+                  <i class="fa fa-money"></i>
+                  <span>AVERAGE_PAY_HERE</span>
+                </li>
+
+                <li>
+                  <i class="fa fa-briefcase"></i>
+                  <span>SOME_BUSINESS_HERE</span>
+                </li>
+              </ul>
+            </footer>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+</main>
