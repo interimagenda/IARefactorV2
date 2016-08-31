@@ -51,11 +51,16 @@
 
       <li><%= link_to 'Messages', conversations_path %></li>
       <li>
-        <%= link_to "Account & Profile", edit_freelancer_profile_path(current_user.id) %>
+        <%= link_to "Account & Profile", edit_user_registration_path %>
         <ul>
-          <li><%= link_to 'Edit profile', edit_freelancer_profile_path(current_user.id) %></li>
+          <% if current_user.freelancer? %>
+            <% if current_user.freelancer_profile %>
+            <li><%= link_to 'Edit profile', edit_freelancer_profile_path(current_user.freelancer_profile.id) %></li>
+            <% else %>
+            <li><%= link_to 'New profile', new_freelancer_profile_path %></li>
+            <% end %>
+          <% end %>
           <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-
         </ul>
       </li>
       <% end %>

@@ -1,0 +1,83 @@
+<header class="page-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+
+      </div>
+
+      <div class="col-xs-12 col-sm-8 header-detail">
+        <div class="hgroup">
+          <h1>SOME NAME</h1>
+          <h3>SOME TITLE</h3>
+        </div>
+        <hr>
+        <p class="lead">SOME DESCRIPTION</p>
+
+        <ul class="details cols-2">
+          <li>
+            <i class="fa fa-map-marker"></i>
+            <span>SOME LOCATION</span>
+          </li>
+
+          <li>
+            <i class="fa fa-globe"></i>
+            <a href="#">SOME WEBSITE</a>
+          </li>
+
+          <li>
+            <i class="fa fa-money"></i>
+            <span>SOME FEE</span>
+          </li>
+
+          <li>
+            <i class="fa fa-birthday-cake"></i>
+            <span>SOME AGE</span>
+          </li>
+
+          <li>
+            <i class="fa fa-phone"></i>
+            <span>SOME PHONE NUMBER</span>
+          </li>
+
+          <li>
+            <i class="fa fa-envelope"></i>
+            <a href="#">SOME MAIL</a>
+          </li>
+        </ul>
+
+        <div class="tag-list">
+          <span>SOME SkILL</span>
+          <span>SOME SkILL</span>
+          <span>SOME SkILL</span>
+          <span>SOME SkILL</span>
+          <span>SOME SkILL</span>
+          <span>SOME SkILL</span>
+          <span>SOME SkILL</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <ul class="social-icons">
+        <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+      </ul>
+
+      <div class="action-buttons">
+        <a class="btn btn-gray" href="#">Download CV</a>
+        <a class="btn btn-success" data-toggle="modal" data-target="#modal-contact" href="#">Contact me</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<%= @freelancer %>
+
+<% if !current_user.follows?(@freelancer) %>
+  <%= link_to('Follow', user_follow_path(@freelancer), method: :post) %>
+  <% else %>
+  <%= link_to('Unfollow', user_unfollow_path(@freelancer), method: :post) %>
+<% end %>

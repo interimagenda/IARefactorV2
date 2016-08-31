@@ -1,11 +1,53 @@
-<% @freelancers.each do |freelancer| %>
+<main>
+  <section class="no-padding-top bg-alt">
+    <div class="container">
+      <div class="row">
 
-  <%= freelancer.email %>
+        <!-- Resume detail -->
+        <% @freelancers.each do |freelancer| %>
+        <div class="col-xs-12">
+          <a class="item-block" href="resume-detail.html">
+            <header>
+              <div class="hgroup">
+                <h4>SOME_NAME</h4>
+                <h5>SOME JOB TITLE</h5>
+              </div>
+            </header>
 
-  <% if !current_user.follows?(freelancer) %>
-    <%= link_to('Follow', user_follow_path(freelancer), method: :post) %>
-    <% else %>
-    <%= link_to('Unfollow', user_unfollow_path(freelancer), method: :post) %>
-  <% end %>
+            <div class="item-body">
+              <p>SOME DESCRITION</p>
 
-<% end %>
+              <div class="tag-list">
+                <span>SOME SKILL</span>
+                <span>SOME SKILL</span>
+                <span>SOME SKILL</span>
+                <span>SOME SKILL</span>
+              </div>
+            </div>
+
+            <footer>
+              <ul class="details cols-3">
+                <li>
+                  <i class="fa fa-map-marker"></i>
+                  <span>SOME LOCATION</span>
+                </li>
+
+                <li>
+                  <i class="fa fa-money"></i>
+                  <span>SOME FEE</span>
+                </li>
+
+                <li>
+                  <i class="fa fa-certificate"></i>
+                  <span>SOME EDUCATION</span>
+                </li>
+              </ul>
+            </footer>
+          </a>
+        </div>
+        <% end %>
+        <!-- END Resume detail -->
+      </div>
+    </div>
+  </section>
+</main>

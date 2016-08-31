@@ -11,7 +11,7 @@ class FreelancerProfilesController < ApplicationController
       @freelancer_profile = FreelancerProfile.new
     elsif current_user.freelancer_profile
       flash[:error] = "You already created your profile!"
-    end    
+    end
   end
 
   def edit
@@ -20,6 +20,13 @@ class FreelancerProfilesController < ApplicationController
 
   def update
     @freelancer_profile = current_user.freelancer_profile
+    if @freelancer_profile.update_attributes(update_params)
+      flash[:success] = "Your profile has been updated."
+      redirect_to root_path
+    else
+      flash[:error] = "Something went wrong. Please try again."
+      render 'edit'
+    end
   end
 
   def create
