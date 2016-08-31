@@ -1,0 +1,98 @@
+<header class="site-header size-lg text-center">
+  <div class="container">
+    <div class="col-xs-12">
+
+      <h2>Hey, freelancer!<mark>GRAB</mark> your project!</h2>
+      <h5 class="font-alt">Before someone else does.</h5>
+
+    </div>
+
+  </div>
+</header>
+
+<main>
+  <section class="bg-alt">
+    <div class="container">
+      <header class="section-header">
+        <span>Latest</span>
+        <h2>Recent jobs</h2>
+        <p>Here's the last five job posted on the website</p>
+      </header>
+
+      <div class="row item-blocks-condensed">
+        <div class="col-xs-12">
+          <a class="item-block" href="job-detail.html">
+            <header>
+              <div class="hgroup">
+                <h4>SOME TITLE</h4>
+                <h5>SOME COMPNAY</h5>
+              </div>
+              <div class="header-meta">
+                <span class="location">SOME LOCATION</span>
+                <span class="label label-success">SOME FTE</span>
+              </div>
+            </header>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="bg-alt">
+    <div class="container">
+      <header class="section-header">
+        <span>Reasons to join</span>
+        <h2>Independancy</h2>
+        <p>Some key features</p>
+      </header>
+
+      <div class="category-grid">
+        <%= link_to about_path do %>
+          <i class="fa fa-line-chart"></i>
+          <h6>Earn more</h6>
+          <p>Raise your income by going freelance. Not ready for freelancing? Try payrolling instead!</p>
+        <% end %>
+
+        <%= link_to about_path do %>
+          <i class="fa fa-eye"></i>
+          <h6>Transparent rates</h6>
+          <p>Employers <strong>must</strong> show their pay rate. So you know what you are applying for.</p>
+        <% end %>
+
+        <%= link_to about_path do %>
+          <i class="fa fa-medkit"></i>
+          <h6>No recruiters</h6>
+          <p>Our aim is to turn third-party recruiters obsolete for freelance jobs. You must be free.</p>
+        <% end %>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="col-sm-12 col-md-6">
+        <header class="section-header text-left">
+          <span>Workflow</span>
+          <h2>How it works</h2>
+        </header>
+
+        <p class="lead">Pellentesque et pulvinar orci. Suspendisse sed euismod purus. Pellentesque nunc ex, ultrices eu enim non, consectetur interdum nisl. Nam congue interdum mauris, sed ultrices augue lacinia in. Praesent turpis purus, faucibus in tempor vel, dictum ac eros.</p>
+        <p>Nulla quis felis et orci luctus semper sit amet id dui. Aenean ultricies lectus nunc, vel rhoncus odio sagittis eu. Sed at felis eu tortor mattis imperdiet et sed tortor. Nullam ac porttitor arcu. Vivamus tristique elit id tempor lacinia. Donec auctor at nibh eget tincidunt. Nulla facilisi. Nunc condimentum dictum mattis.</p>
+
+
+        <br><br>
+        <%= link_to 'Learn more', about_path, class: "btn btn-primary" %>
+      </div>
+
+      <div class="col-sm-12 col-md-6 hidden-xs hidden-sm">
+        <br>
+        <img class="center-block" src="https://placeholdit.imgix.net/~text?txtsize=133&txt=1600%C3%97900&w=1600&h=900" alt="how it works">
+      </div>
+
+    </div>
+  </section>
+
+
+</main>
