@@ -1,1 +1,17 @@
 <%= @job.title %>
+
+<% if can? :update, @job %>
+  <%= link_to "Edit job", edit_job_path( @job.id ) %>
+<% end %>
+
+<% if can? :destroy, @job %>
+  <%= link_to "Delete job", @job, method: :delete, data: {confirm: "Do you wish to delete #{@job.title}?"} %>
+<% end %>
+
+<% if current_user.freelancer? %>
+  <% if !current_user.likes?(@job) %>
+    <%= link_to('Like', job_like_path(@job), method: :post) %>
+  <% else %>
+    <%= link_to('Unlike', job_unlike_path(@job), method: :post) %>
+  <% end %>
+<% end %>

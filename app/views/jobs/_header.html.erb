@@ -1,0 +1,25 @@
+<header class="page-header bg-img header-job-search">
+  <div class="container page-name">
+    <h1 class="text-center">Browse jobs</h1>
+    <p class="lead text-center">Find your challenge!</p>
+  </div>
+  <div class="container">
+    <%= form_tag '/employers', :method => "get", id: "search-form", class: "header-job-search" do %>
+      <div class="row">
+        <div class="form-group col-xs-12">
+           <%= search_field_tag :job_search, params[:job_search], placeholder: "insert a search query here", autofocus: true, class: "form-control" %>
+        </div>
+      </div>
+      <div class="button-group">
+        <div class="action-buttons">
+          <%= submit_tag "Search", :name => nil, id: "search-form", class: "btn btn-primary" %>
+        </div>
+        <div class="action-buttons">
+          <% if can? :create, Job %>
+            <%= link_to "New job", new_job_path, class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</header>

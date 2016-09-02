@@ -4,8 +4,22 @@ class JobsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @jobs = @jobs.paginate(page: params[:page], per_page: 25)
-    @favorite_jobs = @jobs.where(id: current_user.likees(Job).map(&:id));
+
+    if current_user.freelancer?
+      @jobs = @jobs.paginate(page: params[:page], per_page: 25)
+      @favorite_jobs = @jobs.where(id: current_user.likees(Job).map(&:id));
+      if params[:job_search]
+        @jobs = Job.job_search(params[:job_search]).paginate(page: params[:page], per_page: 25)
+      else
+        flash[:error] = "Couldn't find the job"
+        @jobs = Job.paginate(page: params[:page], per_page: 20)
+      end
+    end
+    
+    if current_user.employer?
+      @jobs = current_user.jobs
+      @favorite_jobs = current_user.jobs
+    end
   end
 
   def show
