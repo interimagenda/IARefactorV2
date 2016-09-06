@@ -9,7 +9,6 @@ class EmployersController < ApplicationController
       if params[:employer_search]
         @employers = User.where(role_id: 2).employer_search(params[:employer_search]).order("created_at DESC").paginate(page: params[:page], per_page: 25)
       else
-        flash[:error] = "Couldn't find the employer"
         @employers = User.where(role_id: 2).paginate(page: params[:page], per_page: 20)
       end
     else

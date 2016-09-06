@@ -1,0 +1,74 @@
+<header class="page-header bg-img size-lg" style="background-image: url(assets/img/bg-banner2.jpg)">
+  <div class="container">
+    <div class="header-detail">
+      <div class="hgroup">
+        <h1><%= @job.title %></h1>
+        <h3><a href="#">SOME NAME HERE</a></h3>
+      </div>
+      <time datetime="2016-03-03 20:00">CREATED_AT</time>
+      <hr>
+      <p class="lead">SOME DSCRIPTION</p>
+
+      <ul class="details cols-3">
+        <li>
+          <i class="fa fa-map-marker"></i>
+          <span>SOME LOCATION</span>
+        </li>
+
+        <li>
+          <i class="fa fa-briefcase"></i>
+          <span>SOME FTE</span>
+        </li>
+
+        <li>
+          <i class="fa fa-money"></i>
+          <span>SOME FEE</span>
+        </li>
+
+        <li>
+          <i class="fa fa-clock-o"></i>
+          <span>SOME FTE</span>
+        </li>
+
+        <li>
+          <i class="fa fa-flask"></i>
+          <span>SOME EXPERIENCE DMEAND</span>
+        </li>
+
+        <li>
+          <i class="fa fa-certificate"></i>
+          <a href="#">SOME EDUCATION</a>
+        </li>
+      </ul>
+
+      <div class="button-group">
+        <ul class="social-icons">
+          <li class="title">Share on</li>
+          <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
+          <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+        </ul>
+
+        <div class="action-buttons">
+          <% if can? :update, @job %>
+            <%= link_to "Edit job", edit_job_path( @job.id ), class: "btn btn-primary" %>
+          <% end %>
+
+          <% if can? :destroy, @job %>
+            <%= link_to "Delete job", @job, method: :delete, data: {confirm: "Do you wish to delete #{@job.title}?"}, class: "btn btn-primary" %>
+          <% end %>
+
+          <% if current_user.freelancer? %>
+            <% if !current_user.likes?(@job) %>
+              <%= link_to('Like', job_like_path(@job), method: :post, class: "btn btn-primary") %>
+            <% else %>
+              <%= link_to('Unlike', job_unlike_path(@job), method: :post, class: "btn btn-primary") %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</header>

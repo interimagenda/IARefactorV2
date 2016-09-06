@@ -9,7 +9,6 @@ class FreelancersController < ApplicationController
       if params[:freelancer_search]
         @freelancers = User.where(role_id: 1).freelancer_search(params[:freelancer_search]).paginate(page: params[:page], per_page: 25)
       else
-        flash[:error] = "Couldn't find the freelancer"
         @freelancers = User.where(role_id: 1).paginate(page: params[:page], per_page: 20)
       end
     else
