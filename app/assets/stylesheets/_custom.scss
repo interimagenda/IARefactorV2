@@ -16,3 +16,16 @@
 .input-keyword {
   width: 100% !important;
 }
+
+.site-header {
+  display: none;
+}
+
+@media screen and (min-width: 750px) {
+  .site-header {
+    display: block;
+    background-image: image-url("background-lg-woman-1.jpg");
+    width: 100%;
+    height: auto;
+  }
+}
