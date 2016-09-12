@@ -6,15 +6,6 @@
 
 <%= render "header" %>
 
-
-
-
-
-
-
-
-
-
 <main>
   <section class="no-padding-top bg-alt">
     <div class="container">
@@ -26,31 +17,31 @@
             <%= link_to job_path(job.id), class: "item-block" do %>
               <header>
                 <div class="hgroup">
-                  <h4>SOME TITLE</h4>
-                  <h5>SOME BUSINESS NAME <span class="label label-success">SOME FTE</span></h5>
+                  <h4><%= job.title %></h4>
+                  <h5><%= job.business %><span class="label label-success"><%= job.fte %></span></h5>
                 </div>
-                <time datetime="2016-03-10 20:00">CREATED_AT</time>
+                <time datetime="2016-03-10 20:00"><%= job.created_at %></time>
               </header>
 
               <div class="item-body">
-                <p>SOME DESCRIPTION</p>
+                <p><%= job.description %></p>
               </div>
 
               <footer>
                 <ul class="details cols-3">
                   <li>
                     <i class="fa fa-map-marker"></i>
-                    <span>SOME LOCATION</span>
+                    <span><%= job.city %>, <%= job.country %></span>
                   </li>
 
                   <li>
                     <i class="fa fa-money"></i>
-                    <span>SOME FEE</span>
+                    <span><%= job.pay_rate_minimum %> - <%= job.pay_rate_maximum %></span>
                   </li>
 
                   <li>
                     <i class="fa fa-certificate"></i>
-                    <span>SOME EDUCATION</span>
+                    <span><%= job.education_requirement %></span>
                   </li>
                 </ul>
               </footer>

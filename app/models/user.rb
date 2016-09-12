@@ -30,6 +30,10 @@ class User < ApplicationRecord
     self.role.title == "Employer"
   end
 
+  def has_employer_profile?
+    self.employer_profile 
+  end
+
   def mailboxer_email(object)
     email
   end

@@ -33,6 +33,8 @@
          <%= f.label :gender, "I am female" %>
       </div>
 
+      <%= f.collection_select(:role_id, Role.all, :id, :title, {prompt: true}) %>
+
       <div class="form-group">
         <div class="input-group">
           <%= f.label :email, class: "sr-only" %><br />

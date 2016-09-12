@@ -5,46 +5,48 @@
 
         <!-- Resume detail -->
         <% @freelancers.each do |freelancer| %>
-        <div class="col-xs-12">
-          <a class="item-block" href="resume-detail.html">
-            <header>
-              <div class="hgroup">
-                <h4>SOME_NAME</h4>
-                <h5>SOME JOB TITLE</h5>
-              </div>
-            </header>
+          <% if freelancer.freelancer_profile.present? %>
+            <div class="col-xs-12">
+              <a class="item-block" href="resume-detail.html">
+                <header>
+                  <div class="hgroup">
+                    <h4><%= freelancer.first_name %> <%= freelancer.last_name %></h4>
+                    <h5><%= freelancer.freelancer_profile.field %></h5>
+                  </div>
+                </header>
 
-            <div class="item-body">
-              <p>SOME DESCRITION</p>
+                <div class="item-body">
+                  <p><%= freelancer.freelancer_profile.description %></p>
 
-              <div class="tag-list">
-                <span>SOME SKILL</span>
-                <span>SOME SKILL</span>
-                <span>SOME SKILL</span>
-                <span>SOME SKILL</span>
-              </div>
+                  <div class="tag-list">
+                    <span>SOME SKILL</span>
+                    <span>SOME SKILL</span>
+                    <span>SOME SKILL</span>
+                    <span>SOME SKILL</span>
+                  </div>
+                </div>
+
+                <footer>
+                  <ul class="details cols-3">
+                    <li>
+                      <i class="fa fa-map-marker"></i>
+                      <span><%= freelancer.freelancer_profile.location %></span>
+                    </li>
+
+                    <li>
+                      <i class="fa fa-money"></i>
+                      <span><%= freelancer.freelancer_profile.pay_rate %></span>
+                    </li>
+
+                    <li>
+                      <i class="fa fa-certificate"></i>
+                      <span><%= freelancer.freelancer_profile.education %></span>
+                    </li>
+                  </ul>
+                </footer>
+              </a>
             </div>
-
-            <footer>
-              <ul class="details cols-3">
-                <li>
-                  <i class="fa fa-map-marker"></i>
-                  <span>SOME LOCATION</span>
-                </li>
-
-                <li>
-                  <i class="fa fa-money"></i>
-                  <span>SOME FEE</span>
-                </li>
-
-                <li>
-                  <i class="fa fa-certificate"></i>
-                  <span>SOME EDUCATION</span>
-                </li>
-              </ul>
-            </footer>
-          </a>
-        </div>
+          <% end %>
         <% end %>
         <!-- END Resume detail -->
       </div>

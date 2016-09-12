@@ -28,14 +28,23 @@ class JobsController < ApplicationController
   end
 
   def create
-    @job = Job.new(create_params)
-    @job.user_id = current_user.id
-    if @job.save
-      flash[:success] = "The job was created."
-      redirect_to jobs_path
+    if current_user.employer?
+      if current_user.employer_profile?
+        @job = Job.new(create_params)
+        @job.user_id = current_user.id
+        if @job.save
+          flash[:success] = "The job was created."
+          redirect_to jobs_path
+        else
+          flash[:error] = "Something went wrong. Please try again."
+          render 'new'
+        end
+      else
+        flash[:error] = "Please make a profile first."
+        redirect_to root_path
+      end
     else
-      flash[:error] = "Something went wrong. Please try again."
-      render 'new'
+      flash[:error] = "You are not an employer, so you cannot create a job."
     end
   end
 
@@ -64,11 +73,11 @@ class JobsController < ApplicationController
   private
 
   def create_params
-    params.require( :job ).permit(:title, :user_id )
+    params.require( :job ).permit(:title, :business, :description, :city, :country, :fte, :responsibilities, :user_id )
   end
 
   def update_params
-    params.require( :job ).permit(:title, :user_id)
+    params.require( :job ).permit(:title, :business, :description, :city, :country, :fte, :responsibilities, :user_id)
   end
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824084507) do
+ActiveRecord::Schema.define(version: 20160912081213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,8 +18,9 @@ ActiveRecord::Schema.define(version: 20160824084507) do
   create_table "employer_profiles", force: :cascade do |t|
     t.string   "business"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "company_name"
     t.index ["user_id"], name: "index_employer_profiles_on_user_id", using: :btree
   end
 
@@ -36,8 +37,13 @@ ActiveRecord::Schema.define(version: 20160824084507) do
   create_table "freelancer_profiles", force: :cascade do |t|
     t.string   "business"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "field"
+    t.text     "description"
+    t.string   "location"
+    t.decimal  "pay_rate"
+    t.string   "education"
     t.index ["user_id"], name: "index_freelancer_profiles_on_user_id", using: :btree
   end
 
@@ -59,6 +65,8 @@ ActiveRecord::Schema.define(version: 20160824084507) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "user_id"
+    t.string   "business"
+    t.decimal  "fte"
     t.index ["user_id"], name: "index_jobs_on_user_id", using: :btree
   end
 
